@@ -10,13 +10,13 @@ class ServiceProvider extends BaseServiceProvider
 {
     public function boot()
     {
-        // Only when using locally
-        if (! $this->app->environment(['local', 'testing'])) {
+        $this->publishes([
+            __DIR__ . '/../config/dotoo.php' => base_path('config/dotoo.php'),
+        ], 'dotoo');
 
-            $this->publishes([
-                __DIR__ . '/../config/dotoo.php' => base_path('config/dotoo.php'),
-            ], 'dotoo');
-        }
+        $this->loadViewsFrom(
+            __DIR__ . '/../resources', 'dotoo'
+        );
 
         $this->injectAssets();
     }
@@ -30,9 +30,9 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function injectAssets()
     {
-        // Event::listen(
-        //     RequestHandled::class,
-        //     InjectAssets::class,
-        // );
+        Event::listen(
+            RequestHandled::class,
+            InjectAssets::class,
+        );
     }
 }
