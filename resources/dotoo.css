@@ -1,0 +1,36 @@
+/* Capture parent styles */
+:root {
+  --dt-parent-font: inherit;
+  --dt-parent-color: inherit;
+  --dt-parent-background: inherit;
+  --dt-parent-display: inherit;
+}
+
+/* Style the .dotoo div */
+.dotoo {
+  all: inherit; /* Inherit all properties from parent */
+  font: var(--dt-parent-font);
+  color: var(--dt-parent-color);
+  background: var(--dt-parent-background);
+  display: var(
+    --dt-parent-display,
+    block
+  ); /* Use captured display, default to block */
+
+  /* Ensure it doesn't break layouts */
+  box-sizing: border-box;
+  max-width: 100%;
+
+  /* Apply basic styling */
+  margin: 2px;
+  padding: 2px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1.5px #fca5a5;
+}
+
+/* Reset inheritance for children */
+/*
+.dotoo > * {
+  all: revert;
+}
+*/

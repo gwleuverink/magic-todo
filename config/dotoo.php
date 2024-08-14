@@ -1,0 +1,5 @@
+<?php
+
+return [
+    'enabled' => env('DOTOO_ENABLED', app()->isLocal()),
+];
