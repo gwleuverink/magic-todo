@@ -26,6 +26,18 @@ composer require leuverink/dotoo
 <img src="/resources/images/block-comment.jpg" alt="inline-comment" width="540px" />
 <img src="/resources/images/block-comment-result.jpg" alt="inline-comment-result" width="540px" />
 
+Alternatively, you may also directly use the highlight component in your markup. This way you get full control over attributes and slots. Check it out:
+
+```blade
+<!-- Render a questionmark with tooltip -->
+<x-dotoo::highlight todo="Hello World" />
+
+<!-- Wrap an element using the main slot -->
+<x-dotoo::highlight todo="Hello World">
+    Foo bar
+</x-dotoo::highlight>
+```
+
 ## Configuration
 
 ```php
