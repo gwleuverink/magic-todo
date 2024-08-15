@@ -9,7 +9,7 @@
 
         <span {{ $attributes->merge([
             'class' => 'dotoo',
-            'data-todo' => addslashes($todo)
+            'data-todo' => addslashes(nl2br($todo))
         ]) }}>
             {{ $slot }}
         </span>
@@ -18,7 +18,7 @@
 
         <span {{ $attributes->merge([
             'class' => 'dotoo-mark',
-            'data-todo' => addslashes($todo)
+            'data-todo' => addslashes(nl2br($todo))
         ]) }}>
             {{-- https://buninux.com/freebies --}}
             <svg width="100%" height="100%" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

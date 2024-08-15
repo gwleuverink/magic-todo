@@ -15,4 +15,7 @@
             <directory suffix=".php">./src</directory>
         </include>
     </source>
+    <php>
+        <env name="DOTOO_ENABLED" value="true"/>
+    </php>
 </phpunit>
