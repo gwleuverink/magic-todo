@@ -27,7 +27,7 @@ class CommentsPrecompiler
         // Process each match
         foreach ($matches as $match) {
             $fullComment = $match[0];  // Full comment including {{-- and --}}
-            $commentBody = self::trimColons($match[1]);  // Comment body without {{-- TODO: and --}}
+            $commentBody = htmlspecialchars(self::trimColons($match[1]));  // Comment body without {{-- TODO: and --}}
 
             $magicTodoComponent = <<< BLADE
             <x-magic-todo::highlight todo="{$commentBody}" />
@@ -60,7 +60,7 @@ class CommentsPrecompiler
         foreach ($matches as $match) {
 
             $todoBlock = trim($match[1]); // Everything between TODO & ENDTODO including the wrapping comments
-            $todoComment = self::trimColons($match[2]);  // Just the text inside the TODO comment
+            $todoComment = htmlspecialchars(self::trimColons($match[2]));  // Just the text inside the TODO comment
             $content = trim($match[3]);  // The content between TODO and ENDTODO
 
             $magicTodoComponent = <<< BLADE
