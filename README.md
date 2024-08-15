@@ -34,13 +34,13 @@ You may also wrap markup inside of a TODO in order to emphasize a block.
 <!-- |ENDTODO -->
 ```
 
+<img src="/resources/images/block-comment-result.jpg" alt="inline-comment-result" width="540px" />
+
 Blade comments are also supported and work the same:
 
 ```blade
 {{-- |TODO: This button is not yet implemented --}}
 ```
-
-<img src="/resources/images/block-comment-result.jpg" alt="inline-comment-result" width="540px" />
 
 ### Modifying the TODO keywords
 
