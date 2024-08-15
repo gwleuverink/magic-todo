@@ -2,51 +2,49 @@
 
 use Illuminate\Support\Facades\Blade;
 
-it('compiles Blade TODO comments', function () {
-    $html = Blade::render('{{-- TODO: Foo Bar baz --}}');
+it('compiles HTML TODO comments', function () {
+    $html = Blade::render('<!-- TODO: Foo Bar baz -->');
 
     expect($html)
-        ->not->toContain('{{-- TODO')
+        ->not->toContain('<!-- TODO')
         ->toContain('<span class="dotoo-mark" data-todo="Foo Bar baz">');
 });
 
-it('compiles multiline Blade TODO comments', function () {
+it('compiles multiline HTML TODO comments', function () {
     $html = Blade::render(<<< 'BLADE'
-    {{--
+    <!--
         TODO: Foo Bar baz
         Dipsum dolor sit amet
-    --}}
+    -->
     BLADE);
 
     expect($html)
-        ->not->toContain('{{-- TODO')
+        ->not->toContain('TODO')
         ->toContain(<<< 'HTML'
         <span class="dotoo-mark" data-todo="Foo Bar baz&lt;br /&gt;
             Dipsum dolor sit amet">
         HTML);
 });
 
-it('compiles empty Blade TODO comments', function () {
-    $html = Blade::render(<<< 'BLADE'
-    {{-- TODO: --}}
-    BLADE);
+it('compiles empty HTML TODO comments', function () {
+    $html = Blade::render('<!-- TODO: -->');
 
     expect($html)
-        ->not->toContain('{{-- TODO')
+        ->not->toContain('<!-- TODO')
         ->toContain(<<< 'HTML'
         <span class="dotoo-mark" data-todo="">
         HTML);
 });
 
-it('compiles wrappped Blade TODO comments', function () {
+it('compiles wrappped HTML TODO comments', function () {
     $html = Blade::render(<<< 'BLADE'
-    {{-- TODO: Fooz --}}
+    <!-- TODO: Fooz -->
       this should be wrapped
-    {{-- ENDTODO --}}
+    <!-- ENDTODO -->
     BLADE);
 
     expect($html)
-        ->not->toContain('{{-- TODO')
+        ->not->toContain('<!-- TODO')
         ->toContain(<<< 'HTML'
         <span class="dotoo" data-todo="Fooz">
                     this should be wrapped
@@ -57,7 +55,7 @@ it('compiles wrappped Blade TODO comments', function () {
 it('keeps surrounding html intact', function () {
     $html = Blade::render(<<< 'BLADE'
     Foozbal
-    {{-- TODO: --}}
+    <!-- TODO: -->
     Guacamole
     BLADE);
 

@@ -46,11 +46,7 @@ class ServiceProvider extends BaseServiceProvider
         // We hook into prepareStringsForCompilationUsing instead.
 
         Blade::prepareStringsForCompilationUsing(function ($view) {
-            return BladeCommentsPrecompiler::execute($view);
-        });
-
-        Blade::prepareStringsForCompilationUsing(function ($view) {
-            return HtmlCommentsPrecompiler::execute($view);
+            return CommentsPrecompiler::execute($view);
         });
     }
 }
