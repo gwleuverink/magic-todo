@@ -1,16 +1,16 @@
 <?php
 
-namespace Leuverink\Dotoo;
+namespace Leuverink\MagicTodo;
 
 use Illuminate\Foundation\Http\Events\RequestHandled;
 
 class InjectAssets
 {
-    /** Injects a inline style tag containing Dotoo's CSS inside every full-page response */
+    /** Injects a inline style tag containing MagicTodo's CSS inside every full-page response */
     public function __invoke(RequestHandled $handled)
     {
-        // No need to inject anything when Dotoo is disabled
-        if (! config('dotoo.enabled')) {
+        // No need to inject anything when MagicTodo is disabled
+        if (! config('magic-todo.enabled')) {
             return;
         }
 
@@ -34,8 +34,8 @@ class InjectAssets
         $originalContent = $handled->response->original;
 
         // Inject the assets in the response
-        $js = file_get_contents(__DIR__ . '/../build/dotoo.js');
-        $css = file_get_contents(__DIR__ . '/../build/dotoo.css');
+        $js = file_get_contents(__DIR__ . '/../build/magic-todo.js');
+        $css = file_get_contents(__DIR__ . '/../build/magic-todo.css');
 
         $handled->response->setContent(
             $this->injectAssets($html, <<< HTML
@@ -49,7 +49,7 @@ class InjectAssets
         $handled->response->original = $originalContent;
     }
 
-    /** Injects Dotoo assets into given html string (taken from Livewire's injection mechanism) */
+    /** Injects MagicTodo assets into given html string (taken from Livewire's injection mechanism) */
     protected function injectAssets(string $html, string $core): string
     {
         $html = str($html);

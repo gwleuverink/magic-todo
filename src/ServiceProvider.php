@@ -1,6 +1,6 @@
 <?php
 
-namespace Leuverink\Dotoo;
+namespace Leuverink\MagicTodo;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
@@ -12,11 +12,11 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/dotoo.php' => base_path('config/dotoo.php'),
-        ], 'dotoo');
+            __DIR__ . '/../config/magic-todo.php' => base_path('config/magic-todo.php'),
+        ], 'magic-todo');
 
         $this->loadViewsFrom(
-            __DIR__ . '/../resources', 'dotoo'
+            __DIR__ . '/../resources', 'magic-todo'
         );
 
         $this->injectAssets();
@@ -25,7 +25,7 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/dotoo.php', 'dotoo'
+            __DIR__ . '/../config/magic-todo.php', 'magic-todo'
         );
 
         $this->registerBladePrecompilers();

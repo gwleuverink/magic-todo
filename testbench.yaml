@@ -1,2 +1,2 @@
 providers:
-  - Leuverink\Dotoo\ServiceProvider
+  - Leuverink\MagicTodo\ServiceProvider

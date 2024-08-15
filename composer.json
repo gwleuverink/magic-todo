@@ -1,11 +1,11 @@
 {
-    "name": "leuverink/dotoo",
+    "name": "leuverink/magic-todo",
     "description": "Higlight TODO's inside your Blade templates",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Leuverink\\Dotoo\\": "src/",
+            "Leuverink\\MagicTodo\\": "src/",
             "Tests\\": "tests/"
         }
     },
@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Leuverink\\Dotoo\\ServiceProvider"
+                "Leuverink\\MagicTodo\\ServiceProvider"
             ]
         }
     },

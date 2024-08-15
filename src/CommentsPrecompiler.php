@@ -1,6 +1,6 @@
 <?php
 
-namespace Leuverink\Dotoo;
+namespace Leuverink\MagicTodo;
 
 class CommentsPrecompiler
 {
@@ -18,7 +18,7 @@ class CommentsPrecompiler
     protected static function compileTodosMark($view, $openComment, $closeComment)
     {
         // Regular expression to match TODO comments
-        $keyword = preg_quote(config('dotoo.open'));
+        $keyword = preg_quote(config('magic-todo.open'));
         $pattern = "/{$openComment}\s*{$keyword}(.+?){$closeComment}/s";
 
         // Find all matches
@@ -29,12 +29,12 @@ class CommentsPrecompiler
             $fullComment = $match[0];  // Full comment including {{-- and --}}
             $commentBody = self::trimColons($match[1]);  // Comment body without {{-- TODO: and --}}
 
-            $dotooComponent = <<< BLADE
-            <x-dotoo::highlight todo="{$commentBody}" />
+            $magicTodoComponent = <<< BLADE
+            <x-magic-todo::highlight todo="{$commentBody}" />
             BLADE;
 
-            // Replace the comment Dotoo component
-            $view = str_replace($fullComment, $dotooComponent, $view);
+            // Replace the comment MagicTodo component
+            $view = str_replace($fullComment, $magicTodoComponent, $view);
         }
 
         return $view;
@@ -42,8 +42,8 @@ class CommentsPrecompiler
 
     protected static function compileWrappedBladeTodos($view, $openComment, $closeComment)
     {
-        $openKeyword = preg_quote(config('dotoo.open'));
-        $closeKeyword = preg_quote(config('dotoo.close'));
+        $openKeyword = preg_quote(config('magic-todo.open'));
+        $closeKeyword = preg_quote(config('magic-todo.close'));
 
         // Regular expression to match content between TODO and ENDTODO comments
         $pattern = "/
@@ -63,14 +63,14 @@ class CommentsPrecompiler
             $todoComment = self::trimColons($match[2]);  // Just the text inside the TODO comment
             $content = trim($match[3]);  // The content between TODO and ENDTODO
 
-            $dotooComponent = <<< BLADE
-            <x-dotoo::highlight todo="{$todoComment}">
+            $magicTodoComponent = <<< BLADE
+            <x-magic-todo::highlight todo="{$todoComment}">
                 {$content}
-            </x-dotoo:highlight>
+            </x-magic-todo:highlight>
             BLADE;
 
-            // Replace the comment Dotoo component
-            $view = str_replace($todoBlock, $dotooComponent, $view);
+            // Replace the comment MagicTodo component
+            $view = str_replace($todoBlock, $magicTodoComponent, $view);
         }
 
         return $view;

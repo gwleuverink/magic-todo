@@ -1,14 +1,14 @@
-# Dotoo
+# Magic todo
 
-[![codestyle](https://github.com/gwleuverink/dotoo/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/dotoo/actions/workflows/codestyle.yml)
-[![tests](https://github.com/gwleuverink/dotoo/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/dotoo/actions/workflows/tests.yml)
+[![codestyle](https://github.com/gwleuverink/magic-todo/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/magic-todo/actions/workflows/codestyle.yml)
+[![tests](https://github.com/gwleuverink/magic-todo/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/magic-todo/actions/workflows/tests.yml)
 
-Magically turn HTML & Blade comments into interactive hints on your frontend
+Magically turn HTML comments into interactive hints on your frontend
 
 ## Installation
 
 ```bash
-composer require leuverink/dotoo
+composer require leuverink/magic-todo
 ```
 
 ## Usage
@@ -24,12 +24,6 @@ Magic TODO's work just like any other TODO comment in a Blade file. By default y
 
 <img src="/resources/images/inline-comment-result.jpg" alt="inline-comment-result" width="540px" />
 
-Blade comments are also supported and work the same:
-
-```blade
-{{-- |TODO: This button is not yet implemented --}}
-```
-
 You may also wrap markup inside of a TODO in order to emphasize a block.
 
 ```html
@@ -40,15 +34,19 @@ You may also wrap markup inside of a TODO in order to emphasize a block.
 <!-- |ENDTODO -->
 ```
 
+Blade comments are also supported and work the same:
+
+```blade
+{{-- |TODO: This button is not yet implemented --}}
+```
+
 <img src="/resources/images/block-comment-result.jpg" alt="inline-comment-result" width="540px" />
 
 ### Modifying the TODO keywords
 
-By default magic todo's are opt in. Meaning you'll have to append a pipe `|` token. You are free to modify this behaviour any way you like by changing the config.
+By default magic todo's are opt in. Meaning you'll have to append a pipe `|` token. You are free to modify this behaviour any way you like by by publishing the package config and edit the `magic-todo.open` & `magic-todo.close` keywords.
 
-Publish the package config and edit the `dotoo.open` & `dotoo.close` keywords how you like.
-
-If you change `dotoo.open` to `TODO`, Every TODO comment in your template will be highlighted.
+If you change `magic-todo.open` to `TODO`, Every TODO comment in your template will be highlighted.
 
 ### Usage without comments
 
@@ -56,20 +54,20 @@ Alternatively, you may also directly use the highlight component in your markup.
 
 ```blade
 <!-- Render a questionmark with tooltip -->
-<x-dotoo::highlight todo="Hello World" />
+<x-magic-todo::highlight todo="Hello World" />
 
 <!-- Wrap an element using the main slot -->
-<x-dotoo::highlight todo="Hello World">
+<x-magic-todo::highlight todo="Hello World">
     Foo bar
-</x-dotoo::highlight>
+</x-magic-todo::highlight>
 
-<x-dotoo::highlight>
+<x-magic-todo::highlight>
     <x-slot:todo>
         <div>
             Do anything you like in here
         </div>
     </x-slot:todo>
-</x-dotoo::highlight>
+</x-magic-todo::highlight>
 ```
 
 ## Configuration

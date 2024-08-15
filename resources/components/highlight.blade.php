@@ -2,17 +2,17 @@
     'todo' => ''
 ])
 
-@if (config('dotoo.enabled'))
+@if (config('magic-todo.enabled'))
     @if ($slot->isNotEmpty())
         <span {{ $attributes->merge([
-            'class' => 'dotoo',
+            'class' => 'magic-todo',
             'data-todo' => addslashes(nl2br($todo))
         ]) }}>
             {{ $slot }}
         </span>
     @else
         <span {{ $attributes->merge([
-            'class' => 'dotoo-mark',
+            'class' => 'magic-todo-mark',
             'data-todo' => addslashes(nl2br($todo))
         ]) }}>
             {{-- https://buninux.com/freebies --}}

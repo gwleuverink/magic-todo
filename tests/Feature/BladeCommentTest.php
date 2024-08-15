@@ -7,7 +7,7 @@ it('compiles Blade TODO comments', function () {
 
     expect($html)
         ->not->toContain('{{-- TODO')
-        ->toContain('<span class="dotoo-mark" data-todo="Foo Bar baz">');
+        ->toContain('<span class="magic-todo-mark" data-todo="Foo Bar baz">');
 });
 
 it('compiles multiline Blade TODO comments', function () {
@@ -21,7 +21,7 @@ it('compiles multiline Blade TODO comments', function () {
     expect($html)
         ->not->toContain('{{-- TODO')
         ->toContain(<<< 'HTML'
-        <span class="dotoo-mark" data-todo="Foo Bar baz&lt;br /&gt;
+        <span class="magic-todo-mark" data-todo="Foo Bar baz&lt;br /&gt;
             Dipsum dolor sit amet">
         HTML);
 });
@@ -34,7 +34,7 @@ it('compiles empty Blade TODO comments', function () {
     expect($html)
         ->not->toContain('{{-- TODO')
         ->toContain(<<< 'HTML'
-        <span class="dotoo-mark" data-todo="">
+        <span class="magic-todo-mark" data-todo="">
         HTML);
 });
 
@@ -48,7 +48,7 @@ it('compiles wrappped Blade TODO comments', function () {
     expect($html)
         ->not->toContain('{{-- TODO')
         ->toContain(<<< 'HTML'
-        <span class="dotoo" data-todo="Fooz">
+        <span class="magic-todo" data-todo="Fooz">
                     this should be wrapped
                 </span>
         HTML);
@@ -64,7 +64,7 @@ it('keeps surrounding html intact', function () {
     expect($html)
         ->toContain(<<< 'HTML'
         Foozbal
-        <span class="dotoo-mark" data-todo="">
+        <span class="magic-todo-mark" data-todo="">
         HTML)
         ->toContain(<<< 'HTML'
                 </span>
@@ -77,5 +77,5 @@ it('trims : from tooltip', function () {
 
     expect($html)
         ->not->toContain('{{-- TODO')
-        ->toContain('<span class="dotoo-mark" data-todo="Foo Bar baz">');
+        ->toContain('<span class="magic-todo-mark" data-todo="Foo Bar baz">');
 });
