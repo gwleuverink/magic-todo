@@ -26,6 +26,16 @@ it('compiles multiline HTML TODO comments', function () {
         HTML);
 });
 
+it('compiles quotes in Blade HTML comments', function () {
+    $html = Blade::render(<<< 'BLADE'
+    <!-- |TODO: Foo "Bar" baz -->
+    BLADE);
+
+    expect($html)
+        ->not->toContain('<!-- TODO')
+        ->toContain('<span class="magic-todo-mark" data-todo="Foo &amp;quot;Bar&amp;quot; baz">');
+});
+
 it('compiles empty HTML TODO comments', function () {
     $html = Blade::render('<!-- |TODO: -->');
 
