@@ -6,16 +6,18 @@ import "tippy.js/themes/translucent.css";
 
 document.addEventListener("DOMContentLoaded", function () {
   tippy(".dotoo", {
+    allowHTML: true,
     theme: "translucent",
     inlinePositioning: true,
     plugins: [inlinePositioning],
-    content: (reference) => reference.dataset.todo,
+    content: (reference) => reference.dataset.todo || "todo",
   });
 
   tippy(".dotoo-mark", {
+    allowHTML: true,
     theme: "translucent",
     inlinePositioning: true,
     plugins: [inlinePositioning],
-    content: (reference) => reference.dataset.todo,
+    content: (reference) => reference.dataset.todo || "todo",
   });
 });

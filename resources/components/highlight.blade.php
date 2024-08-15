@@ -3,19 +3,14 @@
 ])
 
 @if(config('dotoo.enabled'))
-
-
     @if($slot->isNotEmpty())
-
         <span {{ $attributes->merge([
             'class' => 'dotoo',
             'data-todo' => addslashes(nl2br($todo))
         ]) }}>
             {{ $slot }}
         </span>
-
     @else
-
         <span {{ $attributes->merge([
             'class' => 'dotoo-mark',
             'data-todo' => addslashes(nl2br($todo))
@@ -26,11 +21,7 @@
                 <path d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1116 0 8 8 0 01-16 0z" fill="currentColor"/>
             </svg>
         </span>
-
     @endif
-
 @else
-
     {{ $slot }}
-
 @endif
