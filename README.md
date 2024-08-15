@@ -3,7 +3,7 @@
 [![codestyle](https://github.com/gwleuverink/magic-todo/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/magic-todo/actions/workflows/codestyle.yml)
 [![tests](https://github.com/gwleuverink/magic-todo/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/magic-todo/actions/workflows/tests.yml)
 
-Magically turn HTML comments into interactive hints on your frontend
+Magically turn HTML comments into interactive hints in your Laravel Blade frontend.
 
 ## Installation
 
