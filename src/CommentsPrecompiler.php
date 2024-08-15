@@ -18,7 +18,7 @@ class CommentsPrecompiler
     protected static function compileTodosMark($view, $openComment, $closeComment)
     {
         // Regular expression to match TODO comments
-        $keyword = config('dotoo.open');
+        $keyword = preg_quote(config('dotoo.open'));
         $pattern = "/{$openComment}\s*{$keyword}(.+?){$closeComment}/s";
 
         // Find all matches
@@ -27,7 +27,7 @@ class CommentsPrecompiler
         // Process each match
         foreach ($matches as $match) {
             $fullComment = $match[0];  // Full comment including {{-- and --}}
-            $commentBody = trim($match[1]);  // Comment body without {{-- TODO: and --}}
+            $commentBody = self::trimColons($match[1]);  // Comment body without {{-- TODO: and --}}
 
             $dotooComponent = <<< BLADE
             <x-dotoo::highlight todo="{$commentBody}" />
@@ -42,13 +42,8 @@ class CommentsPrecompiler
 
     protected static function compileWrappedBladeTodos($view, $openComment, $closeComment)
     {
-        $openKeyword = config('dotoo.open');
-        $closeKeyword = config('dotoo.close');
-
-        // (?:{$openComment}\s*{$openKeyword}\s*.*?{$closeComment}\s*)*  # Non-capturing group to skip any previous TODO comments
-        // {$openComment}\s*{$openKeyword}\s*(.*?)\s*{$closeComment}     # Capture the content of the relevant TODO comment
-        // ((?:(?!<!--\s*{$openKeyword}).)*?)                            # Capture content up to ENDTODO, non-greedy
-        // {$openComment}\s*{$closeKeyword}\s*{$closeComment}            # Match ENDTODO comment
+        $openKeyword = preg_quote(config('dotoo.open'));
+        $closeKeyword = preg_quote(config('dotoo.close'));
 
         // Regular expression to match content between TODO and ENDTODO comments
         $pattern = "/
@@ -63,8 +58,9 @@ class CommentsPrecompiler
 
         // Process each match
         foreach ($matches as $match) {
+
             $todoBlock = trim($match[1]); // Everything between TODO & ENDTODO including the wrapping comments
-            $todoComment = trim($match[2]);  // Just the text inside the TODO comment
+            $todoComment = self::trimColons($match[2]);  // Just the text inside the TODO comment
             $content = trim($match[3]);  // The content between TODO and ENDTODO
 
             $dotooComponent = <<< BLADE
@@ -78,19 +74,10 @@ class CommentsPrecompiler
         }
 
         return $view;
+    }
 
-        // // Replace the matched content
-        // $replacement = function ($matches) {
-        //     $todoComment = trim($matches[1]);  // Just the text inside the TODO comment
-        //     $content = trim($matches[2]);  // The content between TODO and ENDTODO
-
-        //     return <<< BLADE
-        //     <x-dotoo::highlight todo="{$todoComment}">
-        //         {$content}
-        //     </x-dotoo:highlight>
-        //     BLADE;
-        // };
-
-        // return preg_replace_callback($pattern, $replacement, $view);
+    private static function trimColons($string)
+    {
+        return preg_replace('/^[:\s]+|[:\s]+$/u', '', $string);
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Blade;
 
 it('compiles HTML TODO comments', function () {
-    $html = Blade::render('<!-- TODO: Foo Bar baz -->');
+    $html = Blade::render('<!-- |TODO: Foo Bar baz -->');
 
     expect($html)
         ->not->toContain('<!-- TODO')
@@ -13,7 +13,7 @@ it('compiles HTML TODO comments', function () {
 it('compiles multiline HTML TODO comments', function () {
     $html = Blade::render(<<< 'BLADE'
     <!--
-        TODO: Foo Bar baz
+        |TODO: Foo Bar baz
         Dipsum dolor sit amet
     -->
     BLADE);
@@ -27,7 +27,7 @@ it('compiles multiline HTML TODO comments', function () {
 });
 
 it('compiles empty HTML TODO comments', function () {
-    $html = Blade::render('<!-- TODO: -->');
+    $html = Blade::render('<!-- |TODO: -->');
 
     expect($html)
         ->not->toContain('<!-- TODO')
@@ -38,9 +38,9 @@ it('compiles empty HTML TODO comments', function () {
 
 it('compiles wrappped HTML TODO comments', function () {
     $html = Blade::render(<<< 'BLADE'
-    <!-- TODO: Fooz -->
+    <!-- |TODO: Fooz -->
       this should be wrapped
-    <!-- ENDTODO -->
+    <!-- |ENDTODO -->
     BLADE);
 
     expect($html)
@@ -55,7 +55,7 @@ it('compiles wrappped HTML TODO comments', function () {
 it('keeps surrounding html intact', function () {
     $html = Blade::render(<<< 'BLADE'
     Foozbal
-    <!-- TODO: -->
+    <!-- |TODO: -->
     Guacamole
     BLADE);
 
@@ -68,4 +68,12 @@ it('keeps surrounding html intact', function () {
                 </span>
             Guacamole
         HTML);
+});
+
+it('trims : from tooltip', function () {
+    $html = Blade::render('<!-- |TODO:: Foo Bar baz : -->');
+
+    expect($html)
+        ->not->toContain('<!-- TODO')
+        ->toContain('<span class="dotoo-mark" data-todo="Foo Bar baz">');
 });
