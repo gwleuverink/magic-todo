@@ -78,6 +78,7 @@ class CommentsPrecompiler
 
     private static function trimColons($string)
     {
+        // Trim all colons and spaces from the beginning and end of $string
         return preg_replace('/^[:\s]+|[:\s]+$/u', '', $string);
     }
 }
