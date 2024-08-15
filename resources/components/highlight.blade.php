@@ -2,8 +2,8 @@
     'todo' => ''
 ])
 
-@if(config('dotoo.enabled'))
-    @if($slot->isNotEmpty())
+@if (config('dotoo.enabled'))
+    @if ($slot->isNotEmpty())
         <span {{ $attributes->merge([
             'class' => 'dotoo',
             'data-todo' => addslashes(nl2br($todo))
