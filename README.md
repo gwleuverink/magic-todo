@@ -3,7 +3,7 @@
 [![codestyle](https://github.com/gwleuverink/dotoo/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/dotoo/actions/workflows/codestyle.yml)
 [![tests](https://github.com/gwleuverink/dotoo/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/dotoo/actions/workflows/tests.yml)
 
-Magically turn HTML & Blade comments into visual hints on your frontend
+Magically turn HTML & Blade comments into interactive hints on your frontend
 
 ## Installation
 
