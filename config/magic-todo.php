@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'enabled' => env('DOTOO_ENABLED', app()->isLocal()),
+    'enabled' => env('MAGIC_TODO_ENABLED', app()->isLocal()),
     'open' => '|TODO',
     'close' => '|ENDTODO',
 ];

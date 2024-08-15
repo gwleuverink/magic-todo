@@ -74,7 +74,7 @@ Alternatively, you may also directly use the highlight component in your markup.
 
 ```php
 [
-    'enabled' => env('DOTOO_ENABLED', app()->isLocal()),
+    'enabled' => env('MAGIC_TODO_ENABLED', app()->isLocal()),
     'open' => 'TODO:',
     'close' => 'ENDTODO',
 ];

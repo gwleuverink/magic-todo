@@ -5,7 +5,7 @@ it('injects assets into head tag', function () {
 
     $this->get('test-inject-in-response')
         ->assertOk()
-        ->assertSee('<!--[DOTOO-ASSETS]-->', false);
+        ->assertSee('<!--[MAGIC_TODO-ASSETS]-->', false);
 });
 
 it('injects assets into html body when no head tag is present', function () {
@@ -13,7 +13,7 @@ it('injects assets into html body when no head tag is present', function () {
 
     $this->get('test-inject-in-response')
         ->assertOk()
-        ->assertSee('<!--[DOTOO-ASSETS]-->', false);
+        ->assertSee('<!--[MAGIC_TODO-ASSETS]-->', false);
 });
 
 it('doesnt inject assets into responses without a closing html tag', function () {
@@ -21,5 +21,5 @@ it('doesnt inject assets into responses without a closing html tag', function ()
 
     $this->get('test-inject-in-response')
         ->assertOk()
-        ->assertDontSee('<!--[DOTOO-ASSETS]-->', false);
+        ->assertDontSee('<!--[MAGIC_TODO-ASSETS]-->', false);
 });

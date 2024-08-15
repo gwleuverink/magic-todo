@@ -16,6 +16,6 @@
         </include>
     </source>
     <php>
-        <env name="DOTOO_ENABLED" value="true"/>
+        <env name="MAGIC_TODO_ENABLED" value="true"/>
     </php>
 </phpunit>

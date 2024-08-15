@@ -26,7 +26,7 @@ class InjectAssets
         }
 
         // Skip if core was included before
-        if (str_contains($html, '<!--[DOTOO-ASSETS]-->')) {
+        if (str_contains($html, '<!--[MAGIC_TODO-ASSETS]-->')) {
             return;
         }
 
@@ -39,10 +39,10 @@ class InjectAssets
 
         $handled->response->setContent(
             $this->injectAssets($html, <<< HTML
-            <!--[DOTOO-ASSETS]-->
+            <!--[MAGIC_TODO-ASSETS]-->
             <script type="module">{$js}</script>
             <style>{$css}</style>
-            <!--[ENDDOTOO]-->
+            <!--[ENDMAGIC_TODO]-->
             HTML)
         );
 
