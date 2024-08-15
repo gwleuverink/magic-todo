@@ -18,13 +18,13 @@ composer require leuverink/dotoo
 - Wrap elements inside a block level todo mark
 - Customize open & close keywords
 
-<img src="/resources/images/inline-comment.jpg" alt="inline-comment" width="460px" />
-<img src="/resources/images/inline-comment-result.jpg" alt="inline-comment-result" width="460px" />
+<img src="/resources/images/inline-comment.jpg" alt="inline-comment" width="540px" />
+<img src="/resources/images/inline-comment-result.jpg" alt="inline-comment-result" width="540px" />
 
 <br />
 
-<img src="/resources/images/block-comment.jpg" alt="inline-comment" width="460px" />
-<img src="/resources/images/block-comment-result.jpg" alt="inline-comment-result" width="460px" />
+<img src="/resources/images/block-comment.jpg" alt="inline-comment" width="540px" />
+<img src="/resources/images/block-comment-result.jpg" alt="inline-comment-result" width="540px" />
 
 ## Configuration
 
