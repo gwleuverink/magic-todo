@@ -92,3 +92,12 @@ composer baseline # generate static analysis baseline
 composer test # run test suite
 composer build # bundle all assets
 ```
+
+## Ideas
+
+Here are some other features I have in mind if there is any interest in this package:
+
+- [] List all todo's via artisan command (both in comments & direct component usage)
+- [] Add syntax for only rendering in certain environments (e.g. only dev / dev + staging)
+- [] Support NOTE & FIXME comments with different styling
+- [] Add better theme/styling support
