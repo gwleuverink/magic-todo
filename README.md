@@ -13,7 +13,7 @@ composer require leuverink/magic-todo
 
 ## Usage
 
-Magic TODO's work just like any other TODO comment in a Blade file. By default you opt in to rendering the component by prepending a pipe `|` symbol to your comment.
+Magic Todo turns your standard TODO comments in Blade files into interactive elements. By default, you can activate this feature by adding a pipe `|` symbol at the beginning of your comment.
 
 ```html
 <!-- |TODO: This button is not yet implemented -->
@@ -24,7 +24,7 @@ Magic TODO's work just like any other TODO comment in a Blade file. By default y
 
 <img src="/resources/images/inline-comment-result.jpg" alt="inline-comment-result" width="540px" />
 
-You may also wrap markup inside of a TODO in order to emphasize a block.
+You can also highlight entire blocks of code:
 
 ```html
 <!-- |TODO: This button is not yet implemented -->
@@ -36,21 +36,21 @@ You may also wrap markup inside of a TODO in order to emphasize a block.
 
 <img src="/resources/images/block-comment-result.jpg" alt="inline-comment-result" width="540px" />
 
-Blade comments are also supported and work the same:
+Blade comments are supported as well:
 
 ```blade
 {{-- |TODO: This button is not yet implemented --}}
 ```
 
-### Modifying the TODO keywords
+### Modifying TODO Keywords
 
-By default magic todo's are opt in. Meaning you'll have to append a pipe `|` token. You are free to modify this behaviour any way you like by by publishing the package config and edit the `magic-todo.open` & `magic-todo.close` keywords.
+You can modify the default behavior by publishing the package config and editing the `magic-todo.open` & `magic-todo.close` keywords. For instance, changing `magic-todo.open` to `TODO` will highlight every todo comment in your templates.
 
 If you change `magic-todo.open` to `TODO`, Every TODO comment in your template will be highlighted.
 
-### Usage without comments
+### Direct Component Usage
 
-Alternatively, you may also directly use the highlight component in your markup. This way you get full control over attributes and slots. Check it out:
+For more control, you can use the highlight component directly in your markup:
 
 ```blade
 <!-- Render a questionmark with tooltip -->
@@ -97,9 +97,10 @@ composer build # bundle all assets
 
 Here are some other features I have in mind if there is any interest in this package:
 
-- [ ] List all todo's via artisan command (both in comments & direct component usage)
-- [ ] Add syntax for only rendering in certain environments (e.g. only dev / dev + staging)
-- [ ] Support NOTE & FIXME comments with different styling
+- [ ] Artisan command to list all todos (both in comments & direct component usage)
+- [ ] Syntax for rendering in specific environments (e.g., only dev / dev + staging)
+- [ ] Support for NOTE & FIXME comments with different styling
+- [ ] Replace @mentions with clickable GitHub avatars
 - [ ] Add better theme/styling support
 
 ## License
