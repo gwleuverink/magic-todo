@@ -4,7 +4,7 @@ import tippy, { inlinePositioning } from "tippy.js";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/translucent.css";
 
-document.addEventListener("DOMContentLoaded", function () {
+function init() {
   tippy(".magic-todo", {
     allowHTML: true,
     theme: "translucent",
@@ -20,4 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     plugins: [inlinePositioning],
     content: (reference) => reference.dataset.todo || "todo",
   });
-});
+}
+
+document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("livewire:init", init);
