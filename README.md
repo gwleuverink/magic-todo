@@ -101,3 +101,7 @@ Here are some other features I have in mind if there is any interest in this pac
 - [ ] Add syntax for only rendering in certain environments (e.g. only dev / dev + staging)
 - [ ] Support NOTE & FIXME comments with different styling
 - [ ] Add better theme/styling support
+
+## License
+
+This package is open-source software licensed under the MIT license.
