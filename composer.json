@@ -19,7 +19,8 @@
     "require": {
         "php": "^8.1",
         "illuminate/contracts": "^10|^11",
-        "illuminate/support": "^10|^11"
+        "illuminate/support": "^10|^11",
+        "leuverink/asset-injector": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
