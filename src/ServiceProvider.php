@@ -3,7 +3,7 @@
 namespace Leuverink\MagicTodo;
 
 use Illuminate\Support\Facades\Blade;
-use Leuverink\AssetInjector\Contracts\AssetInjector;
+use Leuverink\AssetInjector\AssetManager;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -32,9 +32,8 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function injectAssets()
     {
-        $this->app->bind(
-            AssetInjector::class,
-            InjectAssets::class
+        AssetManager::register(
+            new InjectAssets
         );
     }
 
