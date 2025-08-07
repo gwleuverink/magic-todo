@@ -18,9 +18,9 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.1",
-        "illuminate/contracts": "^10|^11",
-        "illuminate/support": "^10|^11",
-        "leuverink/asset-injector": "^2.0"
+        "illuminate/contracts": "^10|^11|^12",
+        "illuminate/support": "^10|^11|^12",
+        "leuverink/asset-injector": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
